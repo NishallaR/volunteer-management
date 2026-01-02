@@ -8,7 +8,7 @@ import History from "./components/history";
 import Logout from "./components/logout";
 import { getUserType } from "./utils/auth";
 
-const API_BASE_URL = "https://volunteer-backend-00oq.onrender.com";
+const API_BASE_URL = "https://volunteer-backend-00oq.onrender.com/api";
 
 function Home() {
   return (
