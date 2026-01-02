@@ -1,0 +1,59 @@
+# =========================
+# Python / Django
+# =========================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Migrations (optional: include initial migrations if needed)
+**/migrations/
+!**/migrations/__init__.py
+
+# =========================
+# Node / React
+# =========================
+
+# Node modules
+node_modules/
+build/
+dist/
+
+# npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# React / Node
+volunteer-frontend/node_modules/
+volunteer-frontend/build/
