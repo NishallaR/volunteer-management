@@ -1,6 +1,6 @@
 django
-django-decouple
-dj-database_url
+python-decouple
+dj-database-url
 django-cors-headers
 djangorestframework
 djangorestframework-simplejwt
