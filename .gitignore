@@ -23,8 +23,6 @@ media/
 staticfiles/
 
 # Migrations (optional: include initial migrations if needed)
-**/migrations/
-!**/migrations/__init__.py
 
 # =========================
 # Node / React
