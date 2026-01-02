@@ -9,7 +9,7 @@ import Logout from "./components/logout";
 import { getUserType } from "./utils/auth";
 
 // Replace this with your actual Render backend URL
-const API_BASE_URL = "https://volunteer-management.onrender.com";
+const API_BASE_URL = "https://volunteer-backend-00oq.onrender.com";
 
 function Home() {
   return (
