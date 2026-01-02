@@ -1,15 +1,10 @@
-#!/usr/bin/env bash
-set -o errexit
-
-pip install -r requirements.txt
-
-python manage.py collectstatic --no-input
-
-python manage.py makemigrations accounts
-python manage.py makemigrations opportunities
-python manage.py makemigrations applications
-python manage.py makemigrations notifications
-
-python manage.py migrate accounts
-
-python manage.py migrate
+django
+python-decouple
+dj-database-url
+django-cors-headers
+djangorestframework
+djangorestframework-simplejwt
+drf-spectacular
+psycopg2-binary
+gunicorn
+whitenoise
