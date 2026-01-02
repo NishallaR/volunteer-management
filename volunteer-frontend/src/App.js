@@ -8,7 +8,9 @@ import History from "./components/history";
 import Logout from "./components/logout"; 
 import { getUserType } from "./utils/auth";
 
-// New Home Component
+// Replace this with your actual Render backend URL
+const API_BASE_URL = "https://volunteer-management.onrender.com";
+
 function Home() {
   return (
     <div className="home-container">
@@ -28,6 +30,9 @@ function App() {
   const userType = getUserType(); 
   const isAuthenticated = !!localStorage.getItem("access");
 
+  // Helper to check if user is an admin or organization for the dashboard
+  const isPrivilegedUser = isAuthenticated && (userType === "organization" || userType === "admin");
+
   return (
     <BrowserRouter>
       <nav className="navbar">
@@ -44,13 +49,13 @@ function App() {
             </>
           )}
 
-          {/* STRICTLY ORGANISATION ONLY: Documentation and Admin Tools */}
-          {isAuthenticated && userType === "organization" && (
+          {/* ADMIN & ORGANISATION DASHBOARD TOOLS */}
+          {isPrivilegedUser && (
             <>
               <Link to="/create-opportunity" className="admin-link">Create Opportunity</Link>
               <Link to="/history" className="admin-link">History</Link>
               <a 
-                href="http://127.0.0.1:8000/api/docs/" 
+                href={`${API_BASE_URL}/api/docs/`} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="docs-link"
@@ -75,14 +80,19 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        
+        {/* Protected Routes */}
         <Route path="/opportunities" element={isAuthenticated ? <Opportunities /> : <Navigate to="/login" replace />} />
         <Route path="/notifications" element={isAuthenticated ? <Notifications /> : <Navigate to="/login" replace />} />
-        <Route path="/history" element={isAuthenticated && userType === "organization" ? <History /> : <Navigate to="/opportunities" replace />} />
-        <Route path="/logout" element={<Logout />} />
+        
+        {/* Admin/Org Only Routes */}
+        <Route path="/history" element={isPrivilegedUser ? <History /> : <Navigate to="/opportunities" replace />} />
         <Route 
           path="/create-opportunity" 
-          element={isAuthenticated && userType === "organization" ? <CreateOpportunity /> : <Navigate to="/opportunities" replace />} 
+          element={isPrivilegedUser ? <CreateOpportunity /> : <Navigate to="/opportunities" replace />} 
         />
+        
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </BrowserRouter>
   );
